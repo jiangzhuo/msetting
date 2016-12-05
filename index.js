@@ -8,7 +8,7 @@ module.exports = MSetting;
 function MSetting(collection) {
   if (!(this instanceof MSetting)) return new MSetting(collection);
   this.collection = collection || monk('127.0.0.1:27017/local').get('setting');
-  // read from local store first
+  // read from   local store first
   this.conf = new Configstore(this.collection.name);
   var self = this;
   co(function*() {
@@ -36,7 +36,7 @@ MSetting.prototype.update = function* update() {
         qry.ts = { $gte: doc.ts };
       } else {
         debug('first tail', 'Date.now()');
-        yield this.collection.insert({ ts: Date.now() }); // start!
+        yield this.collection.insert({ ts: 0 }); // start!
         qry.ts = { $gte: Date.now() }
       }
     }
