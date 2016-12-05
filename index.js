@@ -39,8 +39,8 @@ MSetting.prototype.update = function* update() {
         yield this.collection.insert({ ts: 0 }); // start!
         qry.ts = { $gte: Date.now() }
       }
+      this.qry = qry;
     }
-    this.qry = qry;
 
     debug('tailing with %j', this.qry);
     // query
