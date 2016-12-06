@@ -48,7 +48,8 @@ MSetting.prototype.update = function* update() {
       throw err;
     });
   } catch (e) {
-    yield this.update();
+    console.error('msetting', e.message, e.stack);
+    throw e;
   }
 };
 

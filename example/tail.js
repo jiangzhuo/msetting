@@ -9,3 +9,9 @@ setInterval(function () {
 setInterval(function () {
   console.log(setting.get('a'),setting.path);
 },1000);
+
+setInterval(function(){
+  col.findOne({}).then(function(res){
+    console.log(res)
+  })
+},10000);
